@@ -8,9 +8,35 @@
 
 {% block content %}
   <div>
-    <h1>{{ profile.name }}</h1><br>
-    <a href="{{ profile.github }}">GitHub</a>
-    <a href="{{ profile.linkedin }}">LinkedIn</a><br>
-    <p>{{ profile.bio }}</p>
+    <div>
+      <h1>{{ profile.name }}</h1><br>
+      <a href="{{ profile.github }}">GitHub</a>
+      <a href="{{ profile.linkedin }}">LinkedIn</a><br>
+      <p><strong>Bio: </strong>{{ profile.bio }}</p>
+    </div>
+    <div>
+      <h2>Projects</h2>
+      <ul>
+        {% for project in projects %}
+        <li>
+          <h3>{{ project.name }}</h3>
+          <p>Key Skill: {{ project.key_skill }}</p>
+          <p>Keyword: {{ project.keyword }}</p>
+          <p>Description: {{ project.description }}</p>
+          <a href="{{ project.github_url }}">GitHub</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div>
+      <h2>Certificates</h2>
+      <ul>
+        {% for certificate in certificates %}
+          <li>
+            <p>{{ certificate.name }} - {{ certificate.certifying_institution.name }}</p> 
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
   </div>
 {% endblock %}
